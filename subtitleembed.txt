@@ -1,0 +1,13 @@
+ffmpeg -i box.mp4 -filter_complex "subtitles=subtitle_trail.srt:force_style='Alignment=10,BackColour=&H80000000,BorderStyle=4,Fontsize=11'" output2.mp4
+
+
+ffmpeg -i D:\GIT\TTS\box.mp4 -vf "[in]drawtext=text='Stack Overflow': fontcolor=white: borderw=2: fontfile=Arial Black: fontsize=w*0.04: x=(w-text_w)-(w*0.04): y=(h-text_h)-(w*0.04): enable='between(t,0,6)', drawtext=text='Stack Overflow': fontcolor=white: borderw=2: fontfile=Arial Black: fontsize=w*0.04: x=(w-text_w)/2: y=(h-text_h)/2: enable='between(t,7,10)'[out]" -codec:a copy D:\GIT\TTS\output2.mp4
+
+
+
+ffmpeg -i D:\GIT\TTS\box.mp4 -vf "[in]drawtext=text='Stack Overflow': fontcolor=white: borderw=2: fontfile=Arial Black: fontsize=w*0.04: x=(w-text_w)/2: y=(h-text_h)/2: enable='between(t,2,7)'[out]" -codec:a copy D:\GIT\TTS\output2.mp4
+
+
+
+ffmpeg -i D:\GIT\TTS\box.mp4 -vf "[in]drawtext=text='Stack Overflow': fontcolor=white: borderw=2: fontfile=Arial Black: fontsize=w*0.04: x=(w-text_w)/2: y=(h-text_h)/2: enable='between(t,7,10)'[out]" -codec:a copy D:\GIT\TTS\output2.mp4
+
