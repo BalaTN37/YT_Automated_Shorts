@@ -4,7 +4,13 @@ from music import *
 from videoEdit import *
 from random import randrange
 import glob
-    
+import sys
+
+#Currently supported only for SHortsCreate Option 9
+for i in range(len( sys.argv )):
+    print(sys.argv[i])
+
+
 #User Input 
 
 print(("1-TTS, 2-Merge Videos, 3-Replace audio in loop"))
@@ -12,7 +18,11 @@ print(("4-Replace audio wih 90deg, 5-Port2LandScape, 6-Stabilizevideo "))
 print(("7-SplitVideos, 8-Make it 9_16, 9-Convert 16_9 2 9_16 : Split to Audio"))
 print((""))
 
-UserChoice = int(input("Enter Input : "))
+if(len( sys.argv ) < 2):
+    UserChoice = int(input("Enter Input : "))
+else:
+    UserChoice = int(sys.argv[1])
+    
 #Disabled for development
 #UserChoice = 5
 print("UserChoice : ", UserChoice)
@@ -94,13 +104,25 @@ elif(UserChoice == 8):
     
 elif(UserChoice == 9): 
     HiberFlg = 0
-    HiberFlg=int(input("Do you wish to Hibernate on Completion : 1-yes"))
+    
+    if(len( sys.argv ) < 2):
+        HiberFlg=int(input("Do you wish to Hibernate on Completion : 1-yes"))
 
     InputvideoPath=[]
-    n=int(input("Number of elements in array:"))
+    
+    if(len( sys.argv ) < 2):
+        n=int(input("Number of elements in array:"))
+    else:
+        n = int(sys.argv[2])
+    
+    
     for i in range(0,n):
-       l=(input())
-       InputvideoPath.append(l)
+        if(len( sys.argv ) < 2):
+            l = (input())
+        else:
+            l = sys.argv[i+3]    
+        InputvideoPath.append(l)
+       
     print(InputvideoPath)
     inPutaudioPath = []   
     for file in glob.glob("D:\GIT\TTS\Audio\*.mp3"):
